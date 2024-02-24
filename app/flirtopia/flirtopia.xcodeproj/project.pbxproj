@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED04442F2B8A166100187748 /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04442E2B8A166100187748 /* GenderViewModel.swift */; };
+		ED0444322B8A1FF600187748 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0444312B8A1FF600187748 /* PreferenceView.swift */; };
+		ED0444342B8A1FFF00187748 /* PreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0444332B8A1FFF00187748 /* PreferenceViewModel.swift */; };
+		ED0444372B8A214C00187748 /* InterestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0444362B8A214C00187748 /* InterestsViewModel.swift */; };
+		ED0444392B8A215700187748 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0444382B8A215700187748 /* InterestsView.swift */; };
+		ED04443C2B8A264C00187748 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04443B2B8A264C00187748 /* Tag.swift */; };
+		ED04443F2B8A2AA100187748 /* TagTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04443E2B8A2AA100187748 /* TagTile.swift */; };
 		EDA1F8892B88DBB30087E2E6 /* flirtopiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8882B88DBB30087E2E6 /* flirtopiaApp.swift */; };
 		EDA1F88B2B88DBB30087E2E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F88A2B88DBB30087E2E6 /* ContentView.swift */; };
 		EDA1F88D2B88DBB40087E2E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA1F88C2B88DBB40087E2E6 /* Assets.xcassets */; };
@@ -32,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED04442E2B8A166100187748 /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
+		ED0444312B8A1FF600187748 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
+		ED0444332B8A1FFF00187748 /* PreferenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewModel.swift; sourceTree = "<group>"; };
+		ED0444362B8A214C00187748 /* InterestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewModel.swift; sourceTree = "<group>"; };
+		ED0444382B8A215700187748 /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
+		ED04443B2B8A264C00187748 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		ED04443E2B8A2AA100187748 /* TagTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTile.swift; sourceTree = "<group>"; };
 		EDA1F8852B88DBB30087E2E6 /* flirtopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flirtopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA1F8882B88DBB30087E2E6 /* flirtopiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flirtopiaApp.swift; sourceTree = "<group>"; };
 		EDA1F88A2B88DBB30087E2E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +82,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED0444302B8A1FE900187748 /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				ED0444312B8A1FF600187748 /* PreferenceView.swift */,
+				ED0444332B8A1FFF00187748 /* PreferenceViewModel.swift */,
+			);
+			path = Preference;
+			sourceTree = "<group>";
+		};
+		ED0444352B8A213E00187748 /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				ED04443D2B8A2A8400187748 /* Components */,
+				ED0444362B8A214C00187748 /* InterestsViewModel.swift */,
+				ED0444382B8A215700187748 /* InterestsView.swift */,
+			);
+			path = Interests;
+			sourceTree = "<group>";
+		};
+		ED04443A2B8A263700187748 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED04443B2B8A264C00187748 /* Tag.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ED04443D2B8A2A8400187748 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ED04443E2B8A2AA100187748 /* TagTile.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		EDA1F87C2B88DBB30087E2E6 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +136,7 @@
 		EDA1F8872B88DBB30087E2E6 /* flirtopia */ = {
 			isa = PBXGroup;
 			children = (
+				ED04443A2B8A263700187748 /* Models */,
 				EDA1F8B42B8940630087E2E6 /* Helpers */,
 				EDA1F8AA2B88F45B0087E2E6 /* Extensions */,
 				EDA1F8962B88E0960087E2E6 /* Views */,
@@ -109,6 +159,8 @@
 		EDA1F8962B88E0960087E2E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ED0444352B8A213E00187748 /* Interests */,
+				ED0444302B8A1FE900187748 /* Preference */,
 				EDA1F8BA2B8959EC0087E2E6 /* Gender */,
 				EDA1F8B72B8946240087E2E6 /* Birth */,
 				EDA1F89C2B88E88A0087E2E6 /* Signup */,
@@ -189,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				EDA1F8BB2B8959F70087E2E6 /* GenderView.swift */,
+				ED04442E2B8A166100187748 /* GenderViewModel.swift */,
 			);
 			path = Gender;
 			sourceTree = "<group>";
@@ -263,26 +316,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0444372B8A214C00187748 /* InterestsViewModel.swift in Sources */,
 				EDA1F8BC2B8959F70087E2E6 /* GenderView.swift in Sources */,
 				EDA1F8992B88E0BE0087E2E6 /* LoginView.swift in Sources */,
 				EDA1F89B2B88E1050087E2E6 /* LoginTextField.swift in Sources */,
 				EDA1F8AC2B88F46A0087E2E6 /* Color.swift in Sources */,
 				EDA1F88B2B88DBB30087E2E6 /* ContentView.swift in Sources */,
+				ED0444342B8A1FFF00187748 /* PreferenceViewModel.swift in Sources */,
 				EDA1F8A12B88F0F70087E2E6 /* LogoFlirtopia.swift in Sources */,
 				EDA1F8A52B88F1850087E2E6 /* LoginViewModel.swift in Sources */,
 				EDA1F8A32B88F1410087E2E6 /* LoginButton.swift in Sources */,
 				EDA1F8B12B88F7240087E2E6 /* SignupViewModel.swift in Sources */,
 				EDA1F8892B88DBB30087E2E6 /* flirtopiaApp.swift in Sources */,
+				ED04443C2B8A264C00187748 /* Tag.swift in Sources */,
 				EDA1F8A72B88F2AE0087E2E6 /* LoginButtonSeparator.swift in Sources */,
 				EDA1F89E2B88E8970087E2E6 /* SignupView.swift in Sources */,
 				EDA1F8BE2B895E0B0087E2E6 /* BirthViewModel.swift in Sources */,
 				EDA1F8A92B88F2D60087E2E6 /* ButtonSignup.swift in Sources */,
+				ED04442F2B8A166100187748 /* GenderViewModel.swift in Sources */,
 				EDA1F8C02B896C770087E2E6 /* LoginSecureField.swift in Sources */,
 				EDA1F8C22B896D0F0087E2E6 /* SignupSecureField.swift in Sources */,
+				ED0444392B8A215700187748 /* InterestsView.swift in Sources */,
 				EDA1F8AF2B88F5880087E2E6 /* SignupTextField.swift in Sources */,
 				EDA1F8B32B88F84C0087E2E6 /* SignupButton.swift in Sources */,
 				EDA1F8B92B8946320087E2E6 /* BirthView.swift in Sources */,
+				ED04443F2B8A2AA100187748 /* TagTile.swift in Sources */,
 				EDA1F8B62B8940760087E2E6 /* KeychainManager.swift in Sources */,
+				ED0444322B8A1FF600187748 /* PreferenceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,8 +482,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,8 +511,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

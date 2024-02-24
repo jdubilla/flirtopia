@@ -41,7 +41,7 @@ class KeychainManager {
         if status == errSecSuccess {
             if let retrievedData = tokenData as? Data,
                 let retrievedToken = String(data: retrievedData, encoding: .utf8) {
-                print("Token retrieved from keychain: \(retrievedToken)")
+//                print("Token retrieved from keychain: \(retrievedToken)")
                 return retrievedToken
             }
         } else {

@@ -23,6 +23,7 @@ struct SignupTextField: View {
             VStack {
                 TextField(placeholder, text: $value)
                     .font(.title2)
+                    .textInputAutocapitalization(.never)
                     .onChange(of: value) { _, _ in
                         updateButtonState()
                     }

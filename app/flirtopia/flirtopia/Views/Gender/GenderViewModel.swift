@@ -1,24 +1,24 @@
 //
-//  LoginViewModel.swift
+//  GenderViewModel.swift
 //  flirtopia
 //
-//  Created by Jean-baptiste DUBILLARD on 23/02/2024.
+//  Created by Jean-baptiste DUBILLARD on 24/02/2024.
 //
 
 import Foundation
 
-class LoginViewModel: ObservableObject {
+class GenderViewModel: ObservableObject {
     
     private let baseUrl: String = "http://localhost:3000"
     
-    @Published var username: String = "j"
-    @Published var password: String = "j"
-    @Published var navigate: Bool = false
+    @Published var selectedGender: String = "Man"
+    var choices = ["Man", "Woman"]
+    @Published var navigate = false
+    @Published var isButtonDisabled = false
     @Published var errorMessage: String = ""
     @Published var showAlert: Bool = false
-    @Published var isButtonDisabled = false
     
-    func signin() async throws {
+    func createGender() async throws {
         
         DispatchQueue.main.async {
             self.isButtonDisabled = true
@@ -30,11 +30,10 @@ class LoginViewModel: ObservableObject {
             }
         }
         
-        let url = URL(string: "\(baseUrl)/login/signin")!
+        let url = URL(string: "\(baseUrl)/users/gender")!
         
         let jsonData: [String: Any] = [
-            "username": username,
-            "password": password
+            "gender": self.selectedGender.lowercased()
         ]
         
         let jsonDataSerialized = try JSONSerialization.data(withJSONObject: jsonData)
@@ -44,7 +43,13 @@ class LoginViewModel: ObservableObject {
         request.httpBody = jsonDataSerialized
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let token = KeychainManager().getTokenFromKeychain() else {
+            self.errorMessage = "You must be logged in to access this page"
+            return
+        }
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             self.errorMessage = "Internal error"
@@ -54,20 +59,14 @@ class LoginViewModel: ObservableObject {
         
         if (httpResponse.statusCode != 200) {
             DispatchQueue.main.async {
-                self.errorMessage = "Bad username or password"
+                self.errorMessage = "Please try again later"
                 self.showAlert = true
             }
             return
         }
         
-        let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-        if let token = jsonObject?["token"] as? String {
-            KeychainManager().saveTokenToKeychain(token: token)
-            DispatchQueue.main.async {
-                self.navigate = true
-            }
-        } else {
-            print("Token not found in JSON")
+        DispatchQueue.main.async {
+            self.navigate = true
         }
     }
 }

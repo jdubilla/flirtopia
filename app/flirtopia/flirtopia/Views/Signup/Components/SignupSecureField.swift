@@ -24,6 +24,9 @@ struct SignupSecureField: View {
                 SecureField(placeholder, text: $value)
                     .font(.title2)
                     .textInputAutocapitalization(.never)
+                    .onChange(of: value) { _, _ in
+                        updateButtonState()
+                    }
                 Rectangle()
                     .frame(height: 1)
                     .padding(.trailing, 20)

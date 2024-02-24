@@ -1,28 +1,28 @@
 //
-//  GenderView.swift
+//  PreferenceView.swift
 //  flirtopia
 //
-//  Created by Jean-baptiste DUBILLARD on 23/02/2024.
+//  Created by Jean-baptiste DUBILLARD on 24/02/2024.
 //
 
 import SwiftUI
 
-struct GenderView: View {
+struct PreferenceView: View {
     
-    @StateObject var vm = GenderViewModel()
+    @StateObject var vm = PreferenceViewModel()
     
     var body: some View {
         VStack {
-            Text("Select your gender")
+            Text("Select your preference")
                 .font(.largeTitle)
-            Picker("Gender", selection: $vm.selectedGender) {
+            Picker("Gender", selection: $vm.selectedPreference) {
                 ForEach(vm.choices, id: \.self) {
                     Text($0)
                 }
             }.pickerStyle(.wheel)
             Button(action: {
                 Task {
-                    try await vm.createGender()
+                    try await vm.createPreference()
                 }
             }, label: {
                 Text("Next")
@@ -41,11 +41,11 @@ struct GenderView: View {
         .navigationBarBackButtonHidden(true)
         .alert(vm.errorMessage, isPresented: $vm.showAlert, actions: {})
         .navigationDestination(isPresented: $vm.navigate) {
-            PreferenceView()
+            InterestsView()
         }
     }
 }
 
 #Preview {
-    GenderView()
+    PreferenceView()
 }

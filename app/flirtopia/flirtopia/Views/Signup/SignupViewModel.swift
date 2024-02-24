@@ -16,7 +16,7 @@ class SignupViewModel: ObservableObject {
     @Published var lastName: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
-    @Published var isButtonDisabled: Bool = false
+    @Published var isButtonDisabled: Bool = true
     @Published var errorMessage: String = ""
     @Published var showAlert: Bool = false
     
@@ -79,7 +79,6 @@ class SignupViewModel: ObservableObject {
         let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any]
         if let token = jsonObject?["token"] as? String {
             KeychainManager().saveTokenToKeychain(token: token)
-            print("Token: \(token)")
         } else {
             print("Token not found in JSON")
         }
