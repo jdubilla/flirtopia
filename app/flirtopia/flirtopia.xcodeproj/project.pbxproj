@@ -13,6 +13,22 @@
 		EDA1F8902B88DBB40087E2E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA1F88F2B88DBB40087E2E6 /* Preview Assets.xcassets */; };
 		EDA1F8992B88E0BE0087E2E6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8982B88E0BE0087E2E6 /* LoginView.swift */; };
 		EDA1F89B2B88E1050087E2E6 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F89A2B88E1050087E2E6 /* LoginTextField.swift */; };
+		EDA1F89E2B88E8970087E2E6 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F89D2B88E8970087E2E6 /* SignupView.swift */; };
+		EDA1F8A12B88F0F70087E2E6 /* LogoFlirtopia.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8A02B88F0F70087E2E6 /* LogoFlirtopia.swift */; };
+		EDA1F8A32B88F1410087E2E6 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8A22B88F1410087E2E6 /* LoginButton.swift */; };
+		EDA1F8A52B88F1850087E2E6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8A42B88F1850087E2E6 /* LoginViewModel.swift */; };
+		EDA1F8A72B88F2AE0087E2E6 /* LoginButtonSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8A62B88F2AE0087E2E6 /* LoginButtonSeparator.swift */; };
+		EDA1F8A92B88F2D60087E2E6 /* ButtonSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8A82B88F2D60087E2E6 /* ButtonSignup.swift */; };
+		EDA1F8AC2B88F46A0087E2E6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8AB2B88F46A0087E2E6 /* Color.swift */; };
+		EDA1F8AF2B88F5880087E2E6 /* SignupTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8AE2B88F5880087E2E6 /* SignupTextField.swift */; };
+		EDA1F8B12B88F7240087E2E6 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8B02B88F7240087E2E6 /* SignupViewModel.swift */; };
+		EDA1F8B32B88F84C0087E2E6 /* SignupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8B22B88F84C0087E2E6 /* SignupButton.swift */; };
+		EDA1F8B62B8940760087E2E6 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8B52B8940760087E2E6 /* KeychainManager.swift */; };
+		EDA1F8B92B8946320087E2E6 /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8B82B8946320087E2E6 /* BirthView.swift */; };
+		EDA1F8BC2B8959F70087E2E6 /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8BB2B8959F70087E2E6 /* GenderView.swift */; };
+		EDA1F8BE2B895E0B0087E2E6 /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8BD2B895E0B0087E2E6 /* BirthViewModel.swift */; };
+		EDA1F8C02B896C770087E2E6 /* LoginSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8BF2B896C770087E2E6 /* LoginSecureField.swift */; };
+		EDA1F8C22B896D0F0087E2E6 /* SignupSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA1F8C12B896D0F0087E2E6 /* SignupSecureField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +39,22 @@
 		EDA1F88F2B88DBB40087E2E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EDA1F8982B88E0BE0087E2E6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EDA1F89A2B88E1050087E2E6 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		EDA1F89D2B88E8970087E2E6 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		EDA1F8A02B88F0F70087E2E6 /* LogoFlirtopia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoFlirtopia.swift; sourceTree = "<group>"; };
+		EDA1F8A22B88F1410087E2E6 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		EDA1F8A42B88F1850087E2E6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EDA1F8A62B88F2AE0087E2E6 /* LoginButtonSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonSeparator.swift; sourceTree = "<group>"; };
+		EDA1F8A82B88F2D60087E2E6 /* ButtonSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSignup.swift; sourceTree = "<group>"; };
+		EDA1F8AB2B88F46A0087E2E6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		EDA1F8AE2B88F5880087E2E6 /* SignupTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextField.swift; sourceTree = "<group>"; };
+		EDA1F8B02B88F7240087E2E6 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		EDA1F8B22B88F84C0087E2E6 /* SignupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupButton.swift; sourceTree = "<group>"; };
+		EDA1F8B52B8940760087E2E6 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		EDA1F8B82B8946320087E2E6 /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
+		EDA1F8BB2B8959F70087E2E6 /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		EDA1F8BD2B895E0B0087E2E6 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
+		EDA1F8BF2B896C770087E2E6 /* LoginSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSecureField.swift; sourceTree = "<group>"; };
+		EDA1F8C12B896D0F0087E2E6 /* SignupSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSecureField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +87,8 @@
 		EDA1F8872B88DBB30087E2E6 /* flirtopia */ = {
 			isa = PBXGroup;
 			children = (
+				EDA1F8B42B8940630087E2E6 /* Helpers */,
+				EDA1F8AA2B88F45B0087E2E6 /* Extensions */,
 				EDA1F8962B88E0960087E2E6 /* Views */,
 				EDA1F8882B88DBB30087E2E6 /* flirtopiaApp.swift */,
 				EDA1F88A2B88DBB30087E2E6 /* ContentView.swift */,
@@ -75,6 +109,9 @@
 		EDA1F8962B88E0960087E2E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EDA1F8BA2B8959EC0087E2E6 /* Gender */,
+				EDA1F8B72B8946240087E2E6 /* Birth */,
+				EDA1F89C2B88E88A0087E2E6 /* Signup */,
 				EDA1F8972B88E0A90087E2E6 /* Login */,
 			);
 			path = Views;
@@ -83,10 +120,77 @@
 		EDA1F8972B88E0A90087E2E6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				EDA1F89F2B88F0CC0087E2E6 /* Components */,
 				EDA1F8982B88E0BE0087E2E6 /* LoginView.swift */,
-				EDA1F89A2B88E1050087E2E6 /* LoginTextField.swift */,
+				EDA1F8A42B88F1850087E2E6 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		EDA1F89C2B88E88A0087E2E6 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F8AD2B88F5720087E2E6 /* Components */,
+				EDA1F89D2B88E8970087E2E6 /* SignupView.swift */,
+				EDA1F8B02B88F7240087E2E6 /* SignupViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		EDA1F89F2B88F0CC0087E2E6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F89A2B88E1050087E2E6 /* LoginTextField.swift */,
+				EDA1F8A02B88F0F70087E2E6 /* LogoFlirtopia.swift */,
+				EDA1F8A22B88F1410087E2E6 /* LoginButton.swift */,
+				EDA1F8A62B88F2AE0087E2E6 /* LoginButtonSeparator.swift */,
+				EDA1F8A82B88F2D60087E2E6 /* ButtonSignup.swift */,
+				EDA1F8BF2B896C770087E2E6 /* LoginSecureField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EDA1F8AA2B88F45B0087E2E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F8AB2B88F46A0087E2E6 /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EDA1F8AD2B88F5720087E2E6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F8AE2B88F5880087E2E6 /* SignupTextField.swift */,
+				EDA1F8B22B88F84C0087E2E6 /* SignupButton.swift */,
+				EDA1F8C12B896D0F0087E2E6 /* SignupSecureField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EDA1F8B42B8940630087E2E6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F8B52B8940760087E2E6 /* KeychainManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		EDA1F8B72B8946240087E2E6 /* Birth */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F8B82B8946320087E2E6 /* BirthView.swift */,
+				EDA1F8BD2B895E0B0087E2E6 /* BirthViewModel.swift */,
+			);
+			path = Birth;
+			sourceTree = "<group>";
+		};
+		EDA1F8BA2B8959EC0087E2E6 /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				EDA1F8BB2B8959F70087E2E6 /* GenderView.swift */,
+			);
+			path = Gender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +263,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA1F8BC2B8959F70087E2E6 /* GenderView.swift in Sources */,
 				EDA1F8992B88E0BE0087E2E6 /* LoginView.swift in Sources */,
 				EDA1F89B2B88E1050087E2E6 /* LoginTextField.swift in Sources */,
+				EDA1F8AC2B88F46A0087E2E6 /* Color.swift in Sources */,
 				EDA1F88B2B88DBB30087E2E6 /* ContentView.swift in Sources */,
+				EDA1F8A12B88F0F70087E2E6 /* LogoFlirtopia.swift in Sources */,
+				EDA1F8A52B88F1850087E2E6 /* LoginViewModel.swift in Sources */,
+				EDA1F8A32B88F1410087E2E6 /* LoginButton.swift in Sources */,
+				EDA1F8B12B88F7240087E2E6 /* SignupViewModel.swift in Sources */,
 				EDA1F8892B88DBB30087E2E6 /* flirtopiaApp.swift in Sources */,
+				EDA1F8A72B88F2AE0087E2E6 /* LoginButtonSeparator.swift in Sources */,
+				EDA1F89E2B88E8970087E2E6 /* SignupView.swift in Sources */,
+				EDA1F8BE2B895E0B0087E2E6 /* BirthViewModel.swift in Sources */,
+				EDA1F8A92B88F2D60087E2E6 /* ButtonSignup.swift in Sources */,
+				EDA1F8C02B896C770087E2E6 /* LoginSecureField.swift in Sources */,
+				EDA1F8C22B896D0F0087E2E6 /* SignupSecureField.swift in Sources */,
+				EDA1F8AF2B88F5880087E2E6 /* SignupTextField.swift in Sources */,
+				EDA1F8B32B88F84C0087E2E6 /* SignupButton.swift in Sources */,
+				EDA1F8B92B8946320087E2E6 /* BirthView.swift in Sources */,
+				EDA1F8B62B8940760087E2E6 /* KeychainManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

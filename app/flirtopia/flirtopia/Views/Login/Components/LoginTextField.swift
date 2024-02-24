@@ -19,9 +19,16 @@ struct LoginTextField: View {
                 .resizable()
                 .frame(width: 25, height: 25)
                 .foregroundStyle(.gray)
-            TextField(placeholder, text: $value)
-                .font(.title2)
-        }
+            VStack {
+                TextField(placeholder, text: $value)
+                    .font(.title2)
+                    .textInputAutocapitalization(.never)
+                Rectangle()
+                    .frame(height: 1)
+                    .padding(.trailing, 20)
+                    .foregroundStyle(.gray)
+            }
+        }.padding(.top, 25)
     }
 }
 

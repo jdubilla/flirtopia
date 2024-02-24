@@ -51,9 +51,9 @@ export const signin = async (req: Request, res: Response) => {
 };
 
 export const signup = async (req: Request, res: Response) => {
-	const { email, username, firstName, lastName, password } = req.body;
+	const { username, firstName, lastName, password } = req.body;
 
-	if (!email || !username || !firstName || !lastName || !password) {
+	if (!username || !firstName || !lastName || !password) {
 		return res.status(401).json({ error: 'Missing required parameters.' });
 	}
 
@@ -77,27 +77,9 @@ export const signup = async (req: Request, res: Response) => {
 		return res.status(500).json({ error: 'Internal server error. Please try again later.' });
 	}
 
-	const checkEmailQuery = 'SELECT * FROM user WHERE email = ?';
-	try {
-		const checkEmailResult: any = await new Promise((resolve, reject) => {
-			connection.query(checkEmailQuery, email, (checkEmailErr: any, checkEmailResults: any) => {
-				if (checkEmailErr) {
-					reject(new Error('Une erreur est survenue lors de la vérification de l\'email.'));
-				} else {
-					resolve(checkEmailResults);
-				}
-			});
-		});
-		if (checkEmailResult.length > 0) {
-			return res.status(409).json({ error: 'Email already taken.' });
-		}
-	} catch (error) {
-		return res.status(500).json({ error: 'Internal server error. Please try again later.' });
-	}
-
 	const hashedPassword = await argon2.hash(password);
-	const sql = 'INSERT INTO user (email, username, firstName, lastName, password) VALUES (?, ?, ?, ?, ?);';
-	const values = [email, username, firstName, lastName, hashedPassword];
+	const sql = 'INSERT INTO user (username, firstName, lastName, password) VALUES (?, ?, ?, ?);';
+	const values = [username, firstName, lastName, hashedPassword];
 
 	connection.query(sql, values, (err: any, result: any) => {
 		if (err) {
@@ -171,75 +153,6 @@ export const verifyTokenEmail = async (req: Request, res: Response) => {
 		return res.status(500).json({ error: 'Error: invalid Token' });
 	}
 }
-
-//export const sendEmailResetPassword = async (req: Request, res: Response) => {
-//	const email: any = req.query.email;
-
-//	try {
-//		const connection = getConnection();
-
-//		const getUserQuery = 'SELECT id, email FROM user WHERE email = ?';
-
-//		const user: any = await new Promise((resolve, reject) => {
-//			connection.query(getUserQuery, email, (err: any, results: any) => {
-//				if (err) {
-//					reject(new Error('Error occurred while updating password'));
-//				} else {
-//					resolve(results);
-//				}
-//			});
-//		});
-
-//		if (user.length === 0) {
-//			return res.status(404).json({ error: 'Email not found' });
-//		}
-
-//		const toHash: string = user[0].id + new Date().toISOString();
-//		const hashedTokenVerify = (await argon2.hash(toHash)).replace(/\//g, '');
-
-//		const query = 'UPDATE user SET password_token = ? WHERE id = ?';
-
-//		await new Promise((resolve, reject) => {
-//			connection.query(query, [hashedTokenVerify, user[0].id], (tokenErr: any, addToken: any) => {
-//				if (tokenErr) {
-//					reject(new Error('An error occurred while adding the token verify'));
-//				} else {
-//					resolve(addToken);
-//				}
-//			});
-//		});
-
-//		const transporter = nodemailer.createTransport({
-//			host: 'smtp-relay.brevo.com',
-//			port: 587,
-//			auth: {
-//				user: 'flirtopia@outlook.com',
-//				pass: process.env.MAIL_PASS,
-//			},
-//		});
-
-//		const mailOptions = {
-//			from: 'flirtopia@outlook.com',
-//			to: email,
-//			subject: 'Reset your flirtopia password',
-//			text: `Verify your email: <a href="http://localhost:${process.env.BACK_PORT}/verifyTokenAccount/${hashedTokenVerify}">Cliquez ici</a>`,
-//		};
-
-//		await new Promise((resolve, reject) => {
-//			transporter.sendMail(mailOptions, (error: Error | null, info: SentMessageInfo) => {
-//				if (error) {
-//					reject(new Error('An error occurred while sending the verification email'));
-//				} else {
-//					resolve(info);
-//				}
-//			});
-//		});
-
-//		return res.json({ message: 'OK' });
-//	} catch (error) {
-//		return res.status(500).json({ error: 'Error: invalid Token' });
-//	}
-//}
 
 export const resetPassword = async (req: Request, res: Response) => {
 	const { password, confPassword, token } = req.body;

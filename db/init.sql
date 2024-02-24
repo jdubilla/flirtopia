@@ -3,7 +3,6 @@ USE flirtopia;
 
 CREATE TABLE IF NOT EXISTS user (
   `id` int NOT NULL AUTO_INCREMENT,
-  `email` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `firstName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,

@@ -37,7 +37,7 @@ router.patch('/allInfosSet', acceptJsonOnly, setAllInfosSet);
 router.patch('/username', acceptJsonOnly, updateUsername);
 router.patch('/firstName', acceptJsonOnly, updateFirstName);
 router.patch('/lastName', acceptJsonOnly, updateLastName);
-router.patch('/email', acceptJsonOnly, updateEmail);
+//router.patch('/email', acceptJsonOnly, updateEmail);
 router.patch('/password', acceptJsonOnly, updatePassword);
 router.post('/location', acceptJsonOnly, updateLocation);
 
