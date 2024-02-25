@@ -35,7 +35,3 @@ struct TagTile: View {
             }
     }
 }
-
-//#Preview {
-//    TagTile(tagName: "Travel")
-//}

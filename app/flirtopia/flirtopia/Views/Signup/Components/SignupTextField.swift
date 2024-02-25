@@ -35,7 +35,3 @@ struct SignupTextField: View {
         }.padding(.top, 15)
     }
 }
-
-//#Preview {
-//    SignupTextField(systemName: "person", placeholder: "Username", value: .constant(""))
-//}

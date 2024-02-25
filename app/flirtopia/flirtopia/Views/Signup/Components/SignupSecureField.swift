@@ -35,7 +35,3 @@ struct SignupSecureField: View {
         }.padding(.top, 25)
     }
 }
-
-//#Preview {
-//    SignupSecureField(systemName: "person", placeholder: "Username", value: .constant(""))
-//}

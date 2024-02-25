@@ -38,7 +38,3 @@ struct SignupButton: View {
         .disabled(isButtonDisabled)
     }
 }
-
-//#Preview {
-//    SignupButton(buttonDisabled: () -> Bool)
-//}

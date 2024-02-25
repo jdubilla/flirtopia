@@ -32,6 +32,18 @@ class UserProfileViewModel: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
+        guard let httpResponse = response as? HTTPURLResponse else {
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
+        }
+        
+        if (httpResponse.statusCode != 200) {
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
+        }
+        
         let decoder = JSONDecoder()
         
         DispatchQueue.main.async {
@@ -66,6 +78,18 @@ class UserProfileViewModel: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
+        guard let httpResponse = response as? HTTPURLResponse else {
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
+        }
+        
+        if (httpResponse.statusCode != 200) {
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
+        }
+        
         let decoder = JSONDecoder()
         
         DispatchQueue.main.async {
@@ -90,6 +114,18 @@ class UserProfileViewModel: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
+        guard let httpResponse = response as? HTTPURLResponse else {
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
+        }
+        
+        if (httpResponse.statusCode != 200) {
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
+        }
+        
         let decoder = JSONDecoder()
         
         DispatchQueue.main.async {
@@ -108,6 +144,3 @@ class UserProfileViewModel: ObservableObject {
         self.relation = self.relation == 0 ? 1 : 0
     }
 }
-
-
-//Réponse de l'API : {"id":13,"username":"Ceasar_Conroy16","firstName":"Olivie","lastName":"Mertz","password":null,"birth":"1982-08-27T00:00:00.000Z","gender":"woman","preference":"man","description":"Quia harum saepe quo aut ut laboriosam atque repellat. Deleniti reprehenderit id officiis minus consectetur architecto asperiores. Explicabo nemo eius. Assumenda libero facilis. Rem aspernat","photo1":"woman/M.jpg","photo2":"woman/F.jpg","photo3":"woman/X.jpg","photo4":"woman/K.jpg","photo5":"woman/P.jpg","all_infos_set":1,"location":"44.842236, -0.64696","verified":1,"verified_token":null,"popularity":150,"online":0,"lastConnection":"2024-02-24T20:03:02.000Z","password_token":null,"interests":[5,10,13,17,19],"distance":677.6,"report":false,"age":41}

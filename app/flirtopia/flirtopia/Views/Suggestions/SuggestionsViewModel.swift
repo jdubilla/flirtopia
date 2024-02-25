@@ -29,7 +29,9 @@ class SuggestionsViewModel: ObservableObject {
         ]
         
         guard let url = urlComponents.url else {
-            fatalError("Impossible de créer l'URL avec les paramètres")
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
         }
         
         var request = URLRequest(url: url)
@@ -39,13 +41,17 @@ class SuggestionsViewModel: ObservableObject {
         if let token = KeychainManager().getTokenFromKeychain() {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         } else {
-            fatalError("Impossible de récupérer le jeton d'autorisation")
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
         }
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
-            fatalError("Réponse non valide")
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
         }
         
         if (httpResponse.statusCode != 200) {
@@ -61,7 +67,7 @@ class SuggestionsViewModel: ObservableObject {
         DispatchQueue.main.async {
             do {
                 let suggestedUsers = try decoder.decode([SuggestedUser].self, from: data)
-                self.idsSuggested = Array(suggestedUsers.prefix(1))
+                self.idsSuggested = Array(suggestedUsers.prefix(10))
             } catch {
                 self.idsSuggested = []
                 self.errorMessage = "Error, please try again later"
@@ -83,7 +89,9 @@ class SuggestionsViewModel: ObservableObject {
         let urlComponents = URLComponents(string: baseUrl)!
 
         guard let url = urlComponents.url else {
-            fatalError("Impossible de créer l'URL avec les paramètres")
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
         }
         
         var request = URLRequest(url: url)
@@ -93,17 +101,17 @@ class SuggestionsViewModel: ObservableObject {
         if let token = KeychainManager().getTokenFromKeychain() {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         } else {
-            fatalError("Impossible de récupérer le jeton d'autorisation")
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
         }
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-//        if let responseString = String(data: data, encoding: .utf8) {
-//            print("Réponse de l'API : \(responseString)")
-//        }
-        
         guard let httpResponse = response as? HTTPURLResponse else {
-            fatalError("Réponse non valide")
+            self.errorMessage = "Error, please try again later"
+            self.showAlert = true
+            return
         }
         
         if (httpResponse.statusCode != 200) {
@@ -125,20 +133,4 @@ class SuggestionsViewModel: ObservableObject {
             }
         }
     }
-    
-//    func calculateAge(from dateString: String) -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        
-//        guard let birthDate = dateFormatter.date(from: dateString) else {
-//            return "0"
-//        }
-//        
-//        let calendar = Calendar.current
-//        let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
-//        let age = ageComponents.year
-//        let stringAge = String(age!)
-//        
-//        return stringAge
-//    }
 }

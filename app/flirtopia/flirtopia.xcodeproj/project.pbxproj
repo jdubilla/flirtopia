@@ -262,10 +262,10 @@
 			isa = PBXGroup;
 			children = (
 				ED04444D2B8A57B400187748 /* Info.plist */,
+				EDA1F8962B88E0960087E2E6 /* Views */,
 				ED04443A2B8A263700187748 /* Models */,
 				EDA1F8B42B8940630087E2E6 /* Helpers */,
 				EDA1F8AA2B88F45B0087E2E6 /* Extensions */,
-				EDA1F8962B88E0960087E2E6 /* Views */,
 				EDA1F8882B88DBB30087E2E6 /* flirtopiaApp.swift */,
 				EDA1F88A2B88DBB30087E2E6 /* ContentView.swift */,
 				EDA1F88C2B88DBB40087E2E6 /* Assets.xcassets */,

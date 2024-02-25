@@ -76,7 +76,3 @@ struct UserProfile: View {
         }
     }
 }
-
-//#Preview {
-//    UserProfile(id: 5)
-//}
