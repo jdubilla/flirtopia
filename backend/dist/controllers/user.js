@@ -166,9 +166,7 @@ const manyUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const connection = (0, connectionDb_1.getConnection)();
         const checkUserQuery = 'SELECT * FROM user WHERE id IN (?)';
         const escapedIds = parsedIds.join(', ');
-        console.log(escapedIds);
         const finalQuery = checkUserQuery.replace('?', escapedIds);
-        console.log(finalQuery);
         const users = yield new Promise((resolve, reject) => {
             connection.query(finalQuery, (checkUserErr, checkUserResults) => {
                 if (checkUserErr) {
@@ -237,8 +235,6 @@ const manyUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             }
             user.age = getAge();
         }
-        console.log(users.length);
-        console.log("FIN");
         return res.json(users);
     }
     catch (error) {
@@ -709,12 +705,9 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 }
             });
         });
-        console.log(users.length);
         const activeUser = users.find((user) => user.id === id);
         const myGender = activeUser.gender;
-        console.log(myGender);
         const myPreference = activeUser.preference;
-        console.log(myPreference);
         const filteredPreferenceUsers = users.filter((user) => {
             if (myGender === "man" && myPreference === "woman") {
                 return (user.gender === "woman" && (user.preference === "man" || user.preference === "both"));
@@ -735,16 +728,13 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 return (user.gender === "woman" && (user.preference === "woman" || user.preference === "both"));
             }
         });
-        console.log(filteredPreferenceUsers.length);
         const filteredLocationUsers = filteredPreferenceUsers.filter((user) => {
             return ((0, userUtils_1.calculateDistance)(activeUser.location, user.location) <= maxDistance);
         });
-        console.log(filteredLocationUsers.length);
         const filteredPopularityUsers = filteredLocationUsers.filter((user) => {
             return (user.popularity >= (activeUser.popularity - differencePopularity) &&
                 user.popularity <= (activeUser.popularity + differencePopularity));
         });
-        console.log(filteredPopularityUsers.length);
         function getAge(user) {
             const birth = new Date(user.birth);
             const currentDate = new Date();
@@ -779,7 +769,6 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
         else {
             filteredInterestsUsers = filteredAgeUsers;
         }
-        console.log(filteredInterestsUsers.length);
         function geographicalScore(user) {
             const dist = (0, userUtils_1.calculateDistance)(activeUser.location, user.location);
             if (dist <= 50) {
@@ -878,7 +867,6 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
             });
         });
         const removeLikedUserArray = filterArray.filter((item) => !likedUsers.some((likedUser) => likedUser.id_user_target === item.id));
-        console.log(removeLikedUserArray.length);
         const blockedQuery = 'SELECT * FROM blockUser WHERE id_user_source = ?';
         const blockedUsers = yield new Promise((resolve, reject) => {
             connection.query(blockedQuery, activeUser.id, (checkTagErr, checkTagResults) => {
@@ -906,7 +894,6 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
         removeSecondBlockedUserArray.sort((a, b) => b.note - a.note);
         const finalArray = removeSecondBlockedUserArray.slice(0, 200);
         finalArray.sort((a, b) => a.id - b.id);
-        console.log(finalArray.length);
         return res.json(finalArray);
     }
     catch (error) {

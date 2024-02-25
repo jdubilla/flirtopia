@@ -13,6 +13,8 @@ class SuggestionsViewModel: ObservableObject {
     
     @Published var idsSuggested: [SuggestedUser] = []
     @Published var userSuggestions: [UserSuggestion] = []
+    @Published var errorMessage: String = ""
+    @Published var showAlert: Bool = false
     
     func getSuggestions() async throws {
         let baseUrl = "\(baseUrl)/users/suggestions"
@@ -46,27 +48,40 @@ class SuggestionsViewModel: ObservableObject {
             fatalError("Réponse non valide")
         }
         
+        if (httpResponse.statusCode != 200) {
+            DispatchQueue.main.async {
+                self.idsSuggested = []
+                self.errorMessage = "Error, please try again later"
+                self.showAlert = true
+            }
+            return
+        }
+        
         let decoder = JSONDecoder()
         DispatchQueue.main.async {
             do {
                 let suggestedUsers = try decoder.decode([SuggestedUser].self, from: data)
-                self.idsSuggested = Array(suggestedUsers.prefix(5))
+                self.idsSuggested = Array(suggestedUsers.prefix(1))
             } catch {
-                print("error")
+                self.idsSuggested = []
+                self.errorMessage = "Error, please try again later"
+                self.showAlert = true
             }
         }
     }
     
     func getUsersFromSuggestions() async throws {
         var baseUrl = "\(baseUrl)/users/manyUsers?ids="
+        
+        if self.idsSuggested.isEmpty {
+            return
+        }
+        
         let idsParams = self.idsSuggested.map { "\($0.id)" }.joined(separator: ",")
         baseUrl.append(idsParams)
-                
-        print(baseUrl)
-        
-        var urlComponents = URLComponents(string: baseUrl)!
+                        
+        let urlComponents = URLComponents(string: baseUrl)!
 
-        
         guard let url = urlComponents.url else {
             fatalError("Impossible de créer l'URL avec les paramètres")
         }
@@ -83,14 +98,47 @@ class SuggestionsViewModel: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
+//        if let responseString = String(data: data, encoding: .utf8) {
+//            print("Réponse de l'API : \(responseString)")
+//        }
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            fatalError("Réponse non valide")
+        }
+        
+        if (httpResponse.statusCode != 200) {
+            DispatchQueue.main.async {
+                self.errorMessage = "Error, please try again later"
+                self.showAlert = true
+                return
+            }
+        }
+        
         let decoder = JSONDecoder()
         
         DispatchQueue.main.async {
             do {
                 self.userSuggestions = try decoder.decode([UserSuggestion].self, from: data)
             } catch {
-                print("error getUsersFromSuggestions() \(error)")
+                self.errorMessage = "Error, please try again later"
+                self.showAlert = true
             }
         }
     }
+    
+//    func calculateAge(from dateString: String) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//        
+//        guard let birthDate = dateFormatter.date(from: dateString) else {
+//            return "0"
+//        }
+//        
+//        let calendar = Calendar.current
+//        let ageComponents = calendar.dateComponents([.year], from: birthDate, to: Date())
+//        let age = ageComponents.year
+//        let stringAge = String(age!)
+//        
+//        return stringAge
+//    }
 }

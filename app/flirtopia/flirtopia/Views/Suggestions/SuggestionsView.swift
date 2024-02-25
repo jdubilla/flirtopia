@@ -15,23 +15,34 @@ struct SuggestionsView: View {
         ScrollView {
             LazyVStack {
                 ForEach(vm.userSuggestions, id: \.self) { user in
-                    ZStack(alignment: .bottomLeading) {
-                        if let uiImage = UIImage(data: user.mainPhoto) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
-                                .frame(width: 300, height: 350)
-                                .aspectRatio(contentMode: .fit)
+                    NavigationLink {
+                        UserProfile(user: user)
+                    } label: {
+                        ZStack(alignment: .bottomLeading) {
+                            if let uiImage = UIImage(data: user.mainPhoto) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 300, height: 300)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                                    .shadow(color: .black, radius: 10)
+                                Rectangle()
+                                    .frame(width: 300, height: 300)
+                                    .foregroundColor(Color.black.opacity(0.2))
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                            }
+                            Text("\(user.firstName), \(user.age)")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.white)
+                                .offset(x: 20, y: -20)
                         }
-                        Text(user.firstName)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .offset(x: 20, y: -20)
                     }
                 }
             }
-        }.task {
+        }
+        .alert(vm.errorMessage, isPresented: $vm.showAlert, actions: {})
+        .task {
             do {
                 try await vm.getSuggestions()
                 try await vm.getUsersFromSuggestions()

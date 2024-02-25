@@ -148,9 +148,7 @@ export const manyUsers = async (req: Request, res: Response) => {
 		const connection = getConnection();
 		const checkUserQuery = 'SELECT * FROM user WHERE id IN (?)';
 		const escapedIds = parsedIds.join(', ');
-		console.log(escapedIds)
 		const finalQuery = checkUserQuery.replace('?', escapedIds);
-		console.log(finalQuery)
 
 		const users: any = await new Promise((resolve, reject) => {
 			connection.query(finalQuery, (checkUserErr: any, checkUserResults: any) => {
@@ -230,8 +228,6 @@ export const manyUsers = async (req: Request, res: Response) => {
 			user.age = getAge();
 		}
 
-		console.log(users.length)
-		console.log("FIN")
 		return res.json(users);
 	} catch (error) {
 		return res.status(500).json({ error: 'Une erreur est survenue lors de la recherche de l\'utilisateur.' });
@@ -724,14 +720,9 @@ export const getSuggestions = async (req: Request, res: Response) => {
 			});
 		});
 
-		console.log(users.length)
-
-		
 		const activeUser = users.find((user: any) => user.id === id);
 		const myGender = activeUser.gender;
-		console.log(myGender)
 		const myPreference = activeUser.preference;
-		console.log(myPreference)
 
 		const filteredPreferenceUsers = users.filter((user: any) => {
 			if (myGender === "man" && myPreference === "woman") {
@@ -749,21 +740,14 @@ export const getSuggestions = async (req: Request, res: Response) => {
 			}
 		});
 
-		console.log(filteredPreferenceUsers.length)
-		
-		
 		const filteredLocationUsers = filteredPreferenceUsers.filter((user: any) => {
 			return (calculateDistance(activeUser.location, user.location) <= maxDistance);
 		})
-
-		console.log(filteredLocationUsers.length)
 
 		const filteredPopularityUsers = filteredLocationUsers.filter((user: any) => {
 			return (user.popularity >= (activeUser.popularity - differencePopularity) &&
 			user.popularity <= (activeUser.popularity + differencePopularity));
 		})
-
-		console.log(filteredPopularityUsers.length)
 
 		function getAge(user: any) {
 			const birth: any = new Date(user.birth);
@@ -802,8 +786,6 @@ export const getSuggestions = async (req: Request, res: Response) => {
 		} else {
 			filteredInterestsUsers = filteredAgeUsers;
 		}
-
-		console.log(filteredInterestsUsers.length)
 
 		function geographicalScore(user: any) {
 			const dist = calculateDistance(activeUser.location, user.location);
@@ -900,8 +882,6 @@ export const getSuggestions = async (req: Request, res: Response) => {
 			!likedUsers.some((likedUser: any) => likedUser.id_user_target === item.id)
 		);
 
-		console.log(removeLikedUserArray.length)
-
 		const blockedQuery = 'SELECT * FROM blockUser WHERE id_user_source = ?';
 
 		const blockedUsers: any = await new Promise((resolve, reject) => {
@@ -938,10 +918,7 @@ export const getSuggestions = async (req: Request, res: Response) => {
 		const finalArray = removeSecondBlockedUserArray.slice(0, 200);
 		finalArray.sort((a: any, b: any) => a.id - b.id);
 
-		console.log(finalArray.length)
-		
 		return res.json(finalArray);
-
 	} catch (error) {
 		return res.status(500).json({ message: 'Error retrieving suggestions' });
 	}

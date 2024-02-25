@@ -63,10 +63,6 @@ class DescriptionViewModel: ObservableObject {
             }
             return
         }
-        
-//        DispatchQueue.main.async {
-//            self.navigate = true
-//        }
     }
     
     func setAllInfosSet() async throws {
@@ -82,16 +78,9 @@ class DescriptionViewModel: ObservableObject {
         }
         
         let url = URL(string: "\(baseUrl)/users/allInfosSet")!
-        
-//        let jsonData: [String: Any] = [
-//            "description": self.description
-//        ]
-        
-//        let jsonDataSerialized = try JSONSerialization.data(withJSONObject: jsonData)
-//        
+
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
-//        request.httpBody = jsonDataSerialized
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         guard let token = KeychainManager().getTokenFromKeychain() else {
