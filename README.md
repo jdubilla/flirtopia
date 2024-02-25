@@ -1,4 +1,4 @@
-# Flirtopia
+![suggestions](https://github.com/jdubilla/flirtopia/assets/86416832/d0aa9c63-1477-40cd-b542-95ed313fa2b3)# Flirtopia
 
 # 🚧 Projet en cours 🚧
 
@@ -35,3 +35,19 @@ L'application Flirtopia suit une architecture MVVM (Model View ViewModel) pour u
 - **Interaction avec les Profils** : Les utilisateurs ont la possibilité de "liker", "unliker", bloquer ou signaler chaque profil.
 - **Modification du Profil** : Les utilisateurs peuvent modifier les informations de leur profil, telles que les photos, la description, etc...
 - **Consultation des Statistiques** : Les utilisateurs peuvent voir qui a consulté leur profil, ainsi que les personnes qu'ils ont likées et qui les ont likées en retour.
+  
+
+## Captures d'écran
+
+![Login](https://github.com/jdubilla/flirtopia/assets/86416832/18869231-dd88-43f6-bbf7-01414492e46a)
+![Signup](https://github.com/jdubilla/flirtopia/assets/86416832/88b1a49c-e548-489b-87ee-f7f49be3b05a)
+![Birth](https://github.com/jdubilla/flirtopia/assets/86416832/f8b94248-a010-4ab7-b9fc-35b9fbf9c2a7)
+![gender](https://github.com/jdubilla/flirtopia/assets/86416832/d4c5630b-4a5b-4e06-b13e-aa8ddd3a12e5)
+![preference](https://github.com/jdubilla/flirtopia/assets/86416832/ece488f8-1fa3-477b-896a-63fe071bd2bd)
+![interests](https://github.com/jdubilla/flirtopia/assets/86416832/c852696d-c24f-45db-b5da-3ff4e22ff108)
+![Description](https://github.com/jdubilla/flirtopia/assets/86416832/d6e80e02-6872-4218-980f-259e0ca6f2c6)
+![suggestions](https://github.com/jdubilla/flirtopia/assets/86416832/b244fcb8-4e3b-45a1-b432-2ce522eaa074)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-02-25 at 18 38 02](https://github.com/jdubilla/flirtopia/assets/86416832/e66c067e-eb9b-44c0-a4a5-6ce22366009e)
+
+
+
