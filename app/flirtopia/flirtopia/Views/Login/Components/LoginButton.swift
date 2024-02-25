@@ -32,8 +32,8 @@ struct LoginButton: View {
         .disabled(vm.username.isEmpty || vm.password.isEmpty || vm.isButtonDisabled)
         .padding(.top, 75)
         .navigationDestination(isPresented: $vm.navigate) {
-//            BirthView()
-            MainTabView()
+            BirthView()
+//            MainTabView()
         }
     }
 }
