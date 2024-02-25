@@ -33,11 +33,8 @@ struct LoginButton: View {
         .padding(.top, 75)
         .navigationDestination(isPresented: $vm.navigate) {
 //            BirthView()
-            InterestsView()
+            MainTabView()
         }
     }
 }
 
-//#Preview {
-//    LoginButton()
-//}

@@ -11,6 +11,6 @@ router.post('/signin', acceptJsonOnly_1.default, login_1.signin);
 router.post('/signup', acceptJsonOnly_1.default, login_1.signup);
 router.post('/resetPasword', login_1.resetPassword);
 router.get('/token', login_1.checkToken);
-router.get('/verifyToken', login_1.verifyTokenEmail);
+//router.get('/verifyToken', verifyTokenEmail);
 //router.get('/sendEmailResetPassword', sendEmailResetPassword);
 exports.default = router;

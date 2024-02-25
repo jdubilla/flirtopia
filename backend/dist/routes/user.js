@@ -40,7 +40,7 @@ router.patch('/allInfosSet', acceptJsonOnly_1.default, user_1.setAllInfosSet);
 router.patch('/username', acceptJsonOnly_1.default, user_1.updateUsername);
 router.patch('/firstName', acceptJsonOnly_1.default, user_1.updateFirstName);
 router.patch('/lastName', acceptJsonOnly_1.default, user_1.updateLastName);
-router.patch('/email', acceptJsonOnly_1.default, user_1.updateEmail);
+//router.patch('/email', acceptJsonOnly, updateEmail);
 router.patch('/password', acceptJsonOnly_1.default, user_1.updatePassword);
 router.post('/location', acceptJsonOnly_1.default, user_1.updateLocation);
 exports.default = router;

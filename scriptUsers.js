@@ -54,13 +54,13 @@ const insertFakeData = async () => {
 	});
 
 	try {
-		const numberOfData = 100;
+		const numberOfData = 500;
 		progressBar.start(numberOfData, 0);
 
 		for (let i = 0; i < numberOfData; i++) {
 			let selectedPhotos = [];
 			const gender = faker.random.arrayElement(['man', 'woman']);
-			const email = faker.internet.email();
+			//const email = faker.internet.email();
 			const username = faker.internet.userName();
 			const firstName = gender === 'man' ? faker.random.arrayElement(maleFirstName) : faker.random.arrayElement(femaleFirstName);
 			const lastName = faker.name.lastName();
@@ -81,8 +81,8 @@ const insertFakeData = async () => {
 			const photo4 = photos[3];
 			const photo5 = photos[4];
 
-			const sql = 'INSERT INTO user (email, username, firstName, lastName, birth, gender, preference, description, password, photo1, photo2, photo3, photo4, photo5, all_infos_set, location, verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-			const values = [email, username, firstName, lastName, birth, gender, preference, description, hashedPassword, photo1, photo2, photo3, photo4, photo5, all_infos_set, location, verified];
+			const sql = 'INSERT INTO user (username, firstName, lastName, birth, gender, preference, description, password, photo1, photo2, photo3, photo4, photo5, all_infos_set, location, verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+			const values = [username, firstName, lastName, birth, gender, preference, description, hashedPassword, photo1, photo2, photo3, photo4, photo5, all_infos_set, location, verified];
 			const newId = await conn.query(sql, values);
 
 			const interests = generateRandomNumbersArray();

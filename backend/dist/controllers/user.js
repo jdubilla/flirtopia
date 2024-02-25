@@ -160,15 +160,15 @@ const manyUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _b;
     const ids = req.query.ids;
     const myId = (_b = req.user) === null || _b === void 0 ? void 0 : _b.userId;
-    if (!Array.isArray(ids)) {
-        return res.status(400).json({ error: 'Paramètre "ids" manquant ou invalide.' });
-    }
-    const parsedIds = ids.map((id) => parseInt(id, 10)).filter((id) => !isNaN(id));
+    let arrayOfStrings = ids.split(",");
+    let parsedIds = arrayOfStrings.map(Number);
     try {
         const connection = (0, connectionDb_1.getConnection)();
         const checkUserQuery = 'SELECT * FROM user WHERE id IN (?)';
         const escapedIds = parsedIds.join(', ');
+        console.log(escapedIds);
         const finalQuery = checkUserQuery.replace('?', escapedIds);
+        console.log(finalQuery);
         const users = yield new Promise((resolve, reject) => {
             connection.query(finalQuery, (checkUserErr, checkUserResults) => {
                 if (checkUserErr) {
@@ -237,6 +237,8 @@ const manyUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             }
             user.age = getAge();
         }
+        console.log(users.length);
+        console.log("FIN");
         return res.json(users);
     }
     catch (error) {
@@ -682,51 +684,6 @@ const updateLocation = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.updateLocation = updateLocation;
-//export const sendVerificationEmail = async (req: Request, res: Response) => {
-//	const id = req.user?.userId;
-//	const email: any = req.query.email;
-//	const toHash: string = id + new Date().toISOString();
-//	try {
-//		const connection = getConnection();
-//		const hashedTokenVerify = (await argon2.hash(toHash)).replace(/\//g, '');
-//		const updateLocationQuery = 'UPDATE user SET verified_token = ? WHERE id = ?';
-//		await new Promise((resolve, reject) => {
-//			connection.query(updateLocationQuery, [hashedTokenVerify, id], (tokenErr: any, addToken: any) => {
-//				if (tokenErr) {
-//					reject(new Error('An error occurred while adding the token verify'));
-//				} else {
-//					resolve(addToken);
-//				}
-//			});
-//		});
-//		const transporter = nodemailer.createTransport({
-//			host: 'smtp-relay.brevo.com',
-//			port: 587,
-//			auth: {
-//				user: 'flirtopia@outlook.com',
-//				pass: process.env.MAIL_PASS,
-//			},
-//		});
-//		const mailOptions = {
-//			from: 'flirtopia@outlook.com',
-//			to: email,
-//			subject: 'Verify your flirtopia account',
-//			text: `Verify your email: <a href="http://localhost:${process.env.BACK_PORT}/verifyTokenAccount/${hashedTokenVerify}">Cliquez ici</a>`,
-//		};
-//		await new Promise((resolve, reject) => {
-//			transporter.sendMail(mailOptions, (error: Error | null, info: SentMessageInfo) => {
-//				if (error) {
-//					reject(new Error('An error occurred while sending the verification email'));
-//				} else {
-//					resolve(info);
-//				}
-//			});
-//		});
-//		return res.json({ message: 'Token verify successfully set' });
-//	} catch (error) {
-//		return res.status(500).json({ message: 'An error occurred while setting the token' });
-//	}
-//};
 const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _s;
     const id = (_s = req.user) === null || _s === void 0 ? void 0 : _s.userId;
@@ -735,10 +692,10 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
     const ageFrom = req.query.ageFrom;
     const ageTo = req.query.ageTo;
     const interests = req.query.interests;
-    let interestsNumber;
-    if (interests) {
-        interestsNumber = interests.map((interest) => parseInt(interest, 10));
-    }
+    let interestsNumber = [];
+    //if (interests) {
+    //	interestsNumber = interests.map((interest: any) => parseInt(interest, 10));
+    //}
     try {
         const query = 'SELECT id, gender, preference, location, birth, popularity FROM user';
         const connection = (0, connectionDb_1.getConnection)();
@@ -752,9 +709,12 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 }
             });
         });
+        console.log(users.length);
         const activeUser = users.find((user) => user.id === id);
         const myGender = activeUser.gender;
+        console.log(myGender);
         const myPreference = activeUser.preference;
+        console.log(myPreference);
         const filteredPreferenceUsers = users.filter((user) => {
             if (myGender === "man" && myPreference === "woman") {
                 return (user.gender === "woman" && (user.preference === "man" || user.preference === "both"));
@@ -775,13 +735,16 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 return (user.gender === "woman" && (user.preference === "woman" || user.preference === "both"));
             }
         });
+        console.log(filteredPreferenceUsers.length);
         const filteredLocationUsers = filteredPreferenceUsers.filter((user) => {
             return ((0, userUtils_1.calculateDistance)(activeUser.location, user.location) <= maxDistance);
         });
+        console.log(filteredLocationUsers.length);
         const filteredPopularityUsers = filteredLocationUsers.filter((user) => {
             return (user.popularity >= (activeUser.popularity - differencePopularity) &&
                 user.popularity <= (activeUser.popularity + differencePopularity));
         });
+        console.log(filteredPopularityUsers.length);
         function getAge(user) {
             const birth = new Date(user.birth);
             const currentDate = new Date();
@@ -816,6 +779,7 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
         else {
             filteredInterestsUsers = filteredAgeUsers;
         }
+        console.log(filteredInterestsUsers.length);
         function geographicalScore(user) {
             const dist = (0, userUtils_1.calculateDistance)(activeUser.location, user.location);
             if (dist <= 50) {
@@ -914,6 +878,7 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
             });
         });
         const removeLikedUserArray = filterArray.filter((item) => !likedUsers.some((likedUser) => likedUser.id_user_target === item.id));
+        console.log(removeLikedUserArray.length);
         const blockedQuery = 'SELECT * FROM blockUser WHERE id_user_source = ?';
         const blockedUsers = yield new Promise((resolve, reject) => {
             connection.query(blockedQuery, activeUser.id, (checkTagErr, checkTagResults) => {
@@ -941,6 +906,7 @@ const getSuggestions = (req, res) => __awaiter(void 0, void 0, void 0, function*
         removeSecondBlockedUserArray.sort((a, b) => b.note - a.note);
         const finalArray = removeSecondBlockedUserArray.slice(0, 200);
         finalArray.sort((a, b) => a.id - b.id);
+        console.log(finalArray.length);
         return res.json(finalArray);
     }
     catch (error) {

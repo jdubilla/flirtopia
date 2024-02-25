@@ -23,6 +23,8 @@ class KeychainManager {
             let status = SecItemAdd(query as CFDictionary, nil)
             if status != errSecSuccess {
                 print("Error saving to keychain")
+            } else {
+                print(token)
             }
         }
     }
