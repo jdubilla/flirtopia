@@ -5,7 +5,7 @@
 //  Created by Jean-baptiste DUBILLARD on 24/02/2024.
 //
 
-import Foundation
+import SwiftUI
 
 class SuggestionsViewModel: ObservableObject {
     
@@ -13,6 +13,7 @@ class SuggestionsViewModel: ObservableObject {
     
     @Published var idsSuggested: [SuggestedUser] = []
     @Published var userSuggestions: [UserSuggestion] = []
+    @Published var photosUser: [UIImage] = []
     @Published var errorMessage: String = ""
     @Published var showAlert: Bool = false
     
@@ -127,6 +128,10 @@ class SuggestionsViewModel: ObservableObject {
         DispatchQueue.main.async {
             do {
                 self.userSuggestions = try decoder.decode([UserSuggestion].self, from: data)
+                
+                let arrayUiImages = self.userSuggestions.compactMap { UIImage(data: $0.mainPhoto) }
+                
+                self.photosUser = arrayUiImages
             } catch {
                 self.errorMessage = "Error, please try again later"
                 self.showAlert = true

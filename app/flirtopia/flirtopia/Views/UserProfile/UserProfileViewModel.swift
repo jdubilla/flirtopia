@@ -5,7 +5,7 @@
 //  Created by Jean-baptiste DUBILLARD on 25/02/2024.
 //
 
-import Foundation
+import SwiftUI
 
 class UserProfileViewModel: ObservableObject {
     
@@ -14,7 +14,7 @@ class UserProfileViewModel: ObservableObject {
     @Published var indexSelectedImage = 0
     @Published var errorMessage: String = ""
     @Published var showAlert: Bool = false
-    @Published var photosUser: [Data] = []
+    @Published var photosUser: [UIImage] = []
     @Published var tags: [Tag] = []
     @Published var relation: Int = 0
     
@@ -49,15 +49,11 @@ class UserProfileViewModel: ObservableObject {
         DispatchQueue.main.async {
             do {
                 let photos = try decoder.decode(PhotosUser.self, from: data)
-                var arrayPhotos: [Data] = []
+                let arrayPhotos: [Data] = [photos.photo1, photos.photo2, photos.photo3, photos.photo4, photos.photo5]
                 
-                arrayPhotos.append(photos.photo1)
-                arrayPhotos.append(photos.photo2)
-                arrayPhotos.append(photos.photo3)
-                arrayPhotos.append(photos.photo4)
-                arrayPhotos.append(photos.photo5)
+                let arrayUiImages = arrayPhotos.compactMap { UIImage(data: $0) }
                 
-                self.photosUser = arrayPhotos
+                self.photosUser = arrayUiImages
                 
             } catch {
                 print("Error photos decoder \(error)")

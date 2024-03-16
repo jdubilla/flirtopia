@@ -18,13 +18,11 @@ struct UserProfile: View {
         VStack(alignment: .leading) {
             TabView(selection: $vm.indexSelectedImage) {
                 ForEach(0..<vm.photosUser.count, id: \.self) { index in
-                    if let uiImage = UIImage(data: vm.photosUser[index]) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 650)
-                            .tag(index)
-                    }
+                    Image(uiImage: vm.photosUser[index])
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 625)
+                        .tag(index)
                 }
             }
             .frame(height: 430)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF3179FD4E891D6817FF62D7 /* Pods_flirtopia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16F4B28D7F836485F02E6BE /* Pods_flirtopia.framework */; };
 		ED04442F2B8A166100187748 /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04442E2B8A166100187748 /* GenderViewModel.swift */; };
 		ED0444322B8A1FF600187748 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0444312B8A1FF600187748 /* PreferenceView.swift */; };
 		ED0444342B8A1FFF00187748 /* PreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0444332B8A1FFF00187748 /* PreferenceViewModel.swift */; };
@@ -57,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		021001037E1C264549941A4C /* Pods-flirtopia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flirtopia.debug.xcconfig"; path = "Target Support Files/Pods-flirtopia/Pods-flirtopia.debug.xcconfig"; sourceTree = "<group>"; };
+		A16F4B28D7F836485F02E6BE /* Pods_flirtopia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flirtopia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED04442E2B8A166100187748 /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
 		ED0444312B8A1FF600187748 /* PreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		ED0444332B8A1FFF00187748 /* PreferenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewModel.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		EDA1F8BD2B895E0B0087E2E6 /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
 		EDA1F8BF2B896C770087E2E6 /* LoginSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSecureField.swift; sourceTree = "<group>"; };
 		EDA1F8C12B896D0F0087E2E6 /* SignupSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSecureField.swift; sourceTree = "<group>"; };
+		EF741B515C1A6419A48FF4A9 /* Pods-flirtopia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flirtopia.release.xcconfig"; path = "Target Support Files/Pods-flirtopia/Pods-flirtopia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +117,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED0444422B8A329A00187748 /* WrappingHStack in Frameworks */,
+				CF3179FD4E891D6817FF62D7 /* Pods_flirtopia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A9A305B6169FAB1E40D3D2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				021001037E1C264549941A4C /* Pods-flirtopia.debug.xcconfig */,
+				EF741B515C1A6419A48FF4A9 /* Pods-flirtopia.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC78B829B4EFEFE9EBE58F69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A16F4B28D7F836485F02E6BE /* Pods_flirtopia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED0444302B8A1FE900187748 /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +270,8 @@
 			children = (
 				EDA1F8872B88DBB30087E2E6 /* flirtopia */,
 				EDA1F8862B88DBB30087E2E6 /* Products */,
+				0A9A305B6169FAB1E40D3D2D /* Pods */,
+				DC78B829B4EFEFE9EBE58F69 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -380,6 +405,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDA1F8932B88DBB40087E2E6 /* Build configuration list for PBXNativeTarget "flirtopia" */;
 			buildPhases = (
+				02132FB68C6D7529E1483812 /* [CP] Check Pods Manifest.lock */,
 				EDA1F8812B88DBB30087E2E6 /* Sources */,
 				EDA1F8822B88DBB30087E2E6 /* Frameworks */,
 				EDA1F8832B88DBB30087E2E6 /* Resources */,
@@ -443,6 +469,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02132FB68C6D7529E1483812 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-flirtopia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EDA1F8812B88DBB30087E2E6 /* Sources */ = {
@@ -620,6 +671,7 @@
 		};
 		EDA1F8942B88DBB40087E2E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 021001037E1C264549941A4C /* Pods-flirtopia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -650,6 +702,7 @@
 		};
 		EDA1F8952B88DBB40087E2E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF741B515C1A6419A48FF4A9 /* Pods-flirtopia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

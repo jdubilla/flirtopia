@@ -14,24 +14,22 @@ struct SuggestionsView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(vm.userSuggestions, id: \.self) { user in
+                ForEach(vm.userSuggestions.indices, id: \.self) { index in
                     NavigationLink {
-                        UserProfile(user: user)
+                        UserProfile(user: vm.userSuggestions[index])
                     } label: {
                         ZStack(alignment: .bottomLeading) {
-                            if let uiImage = UIImage(data: user.mainPhoto) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 300, height: 300)
-                                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                                    .shadow(color: .black, radius: 10)
-                                Rectangle()
-                                    .frame(width: 300, height: 300)
-                                    .foregroundColor(Color.black.opacity(0.2))
-                                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                            }
-                            Text("\(user.firstName), \(user.age)")
+                            Image(uiImage: vm.photosUser[index])
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 300, height: 300)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .shadow(color: .black, radius: 10)
+                            Rectangle()
+                                .frame(width: 300, height: 300)
+                                .foregroundColor(Color.black.opacity(0.2))
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                            Text("\(vm.userSuggestions[index].firstName), \(vm.userSuggestions[index].age)")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundStyle(.white)
@@ -51,8 +49,4 @@ struct SuggestionsView: View {
             }
         }
     }
-}
-
-#Preview {
-    SuggestionsView()
 }
